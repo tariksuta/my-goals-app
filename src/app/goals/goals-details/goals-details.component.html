@@ -1,0 +1,9 @@
+<mat-card>
+    <mat-card-title>
+       {{goal?.zadatak}}
+    </mat-card-title>
+    <mat-card-subtitle>{{goal?.datum | date}}</mat-card-subtitle>
+    <mat-icon class="fav-icon" style="cursor:pointer;" (click)="zavrsi()" [color]="goal?.obavljen ? 'warn' : 'transparent'" aria-hidden="false" aria-label="Example home icon">favorite</mat-icon>
+    <mat-icon class="delete" style="cursor:pointer;" (click)="obrisi()">delete</mat-icon>
+    <button class="btn btn-danger urediClose" (click)="zatvori()">X</button>
+</mat-card>

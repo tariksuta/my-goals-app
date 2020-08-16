@@ -1,0 +1,46 @@
+<div class="row" >
+    <div class="col urediCol" >
+        <button style="width:100%;margin-bottom: 10px;" class="btn btn-primary" (click)="preuzmiSve()">Preuzmi sve ciljeve</button>
+        <button style="width:100%;" class="btn btn-secondary" (click)="spasiSve()">Spasi</button>
+    </div>
+    <div class="col-md-6" style="background-color: rgb(22, 63, 102);">
+       
+        <mat-form-field>
+            <mat-label>Unesi cilj:</mat-label>
+            <input matInput type="text" [(ngModel)]="zadatak">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Odaberi datum:</mat-label>
+            <input matInput [matDatepicker]="picker"  [(ngModel)]="datum">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <button class="btn btn-success float-right" (click)="onAdd()">Dodaj</button>
+        
+    </div>
+    
+    <div class="col"></div>
+</div>
+<div class="row" style="margin-top: 30px;">
+    <div class="col"></div>
+    <div class="col-md-6">
+        <mat-chip-list aria-label="Fish selection" >
+        
+            <mat-chip selected *ngFor="let goal of goals; let i = index" 
+            [color]="goal.obavljen ? 'warn' : 'accent'"
+            [routerLink]="[i]"
+             >{{goal.zadatak}}</mat-chip>
+            
+          </mat-chip-list>
+    </div>
+    <div class="col"></div>
+</div>
+
+<div class="row" style="margin-top: 100px">
+    <div class="col"></div>
+    <div class="col-md-6" >
+       
+        <router-outlet></router-outlet>
+    </div>
+    <div class="col"></div>
+</div>
